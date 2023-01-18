@@ -53,7 +53,6 @@ def EncriptaAsc2(menssagem):
         asc2Message.append(ascword);
     return asc2Message;
 
-
 def Painel():
     print("");
     print("cripto -- RSA --");
@@ -63,8 +62,23 @@ def Painel():
     print("4-) sair");
 
 
-def criptografar(chaveE, chaveN):
-    Menssagem = str(input("Digite a menssagem a ser criptografada: "));
+def Painel_Criptografar():
+    print("");
+    print("cripto -- RSA --");
+    print("1-) criptografar uma menssagem via terminal (Apenas textos pequenos): ");
+    print("2-) criptografar uma menssagem em um arquivo: ");
+    print("3-) sair");
+
+def Painel_Descriptografar():
+    print("");
+    print("cripto -- RSA --");
+    print("1-) Descriptografar uma menssagem via terminal: ");
+    print("2-) Descriptografar uma menssagem em um arquivo: ");
+    print("3-) sair");
+
+
+def criptografar(chaveE, chaveN, opt):
+    Menssagem = str(input("Digite a menssagem a ser criptografada (lembresse que textos não podem ser colados, devem ser escritos no terminal): "));
     if(len(Menssagem) == 0):
         print("menssagem não pode estar vazia");
         
@@ -73,10 +87,18 @@ def criptografar(chaveE, chaveN):
     for index in range(len(asc2Message)):
         C = asc2Message[index] ** chaveE % chaveN;
         encripetedMessage.append(C);
-    print("Tudo certo")
-    print("")
+    if(opt == 1):
+        print("Tudo certo copie sua menssagem abaixo e lembresse de salvar sua chave privada rsa. (os numeros primos não podem ser usados na descriptografia)");
+        print(encripetedMessage);
+    else:
+        ArqFinal = open("Final.txt", "w");
+        for blocks in encripetedMessage:
+            ArqFinal.write(str(blocks))
+            ArqFinal.write("\n")
+        ArqFinal.close()
 
-def descriptografar(Chave, modN):
+
+def descriptografar(Chave, modN, DescriOpt):
     FinalMessage = "";
     for index in range(len(asc2Message)):
         M = encripetedMessage[index] ** Chave % modN;
@@ -84,6 +106,7 @@ def descriptografar(Chave, modN):
     
     print("SUCESSO");
     print(FinalMessage);
+
 
 def DefinirChaves():
     
@@ -122,8 +145,8 @@ def DefinirChaves():
 
         print("Cahves Criadas com sucesso")
         print("Suas chaves são: ")
-        print("Publicas: CHave E {0}, Chave N {1}".format(publicKey[1], publicKey[0]))
-        print("privadas: ", privateKey)
+        print("Publicas: CHave E: {0}, Chave N: {1}".format(publicKey[1], publicKey[0]))
+        print("privada: ", privateKey[2])
         break;
 
 
@@ -135,21 +158,20 @@ def main():
         match opcao:
             case 1:
                 DefinirChaves();
-            case 2:
-                if(len(publicKey) < 2):
-                    print("você não possui chaves cadastradas");
-                else:
-                    E = int(input("digite a chave publica E"));
-                    N = int(input("digite a chave publica N"));
-                    criptografar(E, N);
-            case 3:
-                if(len(privateKey) == 0):
-                    print("Voce não possui chaves privadas para descriptografar");
-                else:
-                    Private1 = int(input("digite uma chave privada"))
-                    ModN = int(input("digite o a chave publica N (DEVE SER A CHAVE N)"))
+            case 2: 
+                    Painel_Criptografar();
+                    criptOpt = int(input(">> "))
                     
-                    descriptografar(Private1, ModN)
+                    E = int(input("digite a chave publica E: "));
+                    N = int(input("digite a chave publica N: "));
+                    criptografar(E, N, criptOpt);
+            case 3:
+                    Painel_Descriptografar();
+                    optDescri = int(input(">>"))
+                    Private1 = int(input("digite a chave privada: "))
+                    ModN = int(input("digite o a chave publica N (DEVE SER A CHAVE N): "))
+
+                    descriptografar(Private1, ModN, DecriptOpt)
             case 4:
                 break;
             case _:
