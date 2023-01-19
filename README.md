@@ -1,12 +1,12 @@
 # RsaCrypto
 No canal Fabrica de noobs no youtube eu assiti um video muito bom sobre criptografia rsa, resolvi criar um systema que criptografa.
 
-<h3>Como usar função definir chaves"
-     Defina dois numeros primos esses numeros não devem se compartilhados com ninguem quanto maior os primos mais seguro
+<h3>Como usar função definir chaves"</h3>
+     <p>Defina dois numeros primos esses numeros não devem se compartilhados com ninguem quanto maior os primos mais seguro
      defina N entre 1 e f(N) desde de que N não tenha um divisor comum com f(N) desconsiderando o 1
      Caso o numero tenha algum divsor com f(N) você tera de escolher outro até achar um que satisfaça
      Em caso de Erro 'Não há inverso multiplicativo modular para este número' voce dvera repetir o passo 2
-     Guarde as chaves privadas e as publicas a chaves publicas pode ser compartilada com qualquer um as privadas não</h3>
+     Guarde as chaves privadas e as publicas a chaves publicas pode ser compartilada com qualquer um as privadas não</p>
 
 <h3>o usar função Criptografar</h3>
      <p>Escolha Se voce quer criptografar uma menssagem pequena no terminal ou um texto grande em um arquivo
