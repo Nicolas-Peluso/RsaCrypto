@@ -2,6 +2,7 @@ asc2Message = [];
 publicKey = [];
 privateKey = [];
 encripetedMessage = [];
+import os;
 
 def VerificaPrimo(p, q):
     PePrimo = False;
@@ -107,6 +108,11 @@ def man():
     print("Esse prgrama foi desenvolvido por um estudante da computação não o use para criptografar arquivos senssiveis, use-o por sua conta e risco");
 
 
+def progress_bar(value):
+    os.system("clear") or None
+    print("Progress:[" + (value//10)*"=" + "]")
+
+
 def criptografar(chaveE, chaveN, opt):
     if(opt == 1):
         Menssagem = str(input("Digite a menssagem a ser criptografada (lembresse que textos não podem ser colados, devem ser escritos no terminal): "));
@@ -118,13 +124,14 @@ def criptografar(chaveE, chaveN, opt):
         text = File.read();
         EncriptaAsc2(text);
         File.close();
-
+    #else no lugar errado
     else:
         EncriptaAsc2(Menssagem);
-
+    
     for index in range(len(asc2Message)):
         C = asc2Message[index] ** chaveE % chaveN;
         encripetedMessage.append(C);
+        progress_bar(len(encripetedMessage))
 
     if(opt == 2):
         ArqFinal = open("Final.txt", "w");
@@ -138,7 +145,6 @@ def criptografar(chaveE, chaveN, opt):
    # else:
      
 
-
 def descriptografar(Chave, modN, DescriOpt):
     FinalMessage = "";
 
@@ -146,12 +152,14 @@ def descriptografar(Chave, modN, DescriOpt):
         for index in range(len(asc2Message)):
             M = encripetedMessage[index] ** Chave % modN;
             FinalMessage += chr(M);
+        print(FinalMessage)
     else:
         Arquivo = open('Final.txt', 'r');
         lista = Arquivo.readlines();
         Arquivo.close();
 
         for line in lista:
+            progress_bar(len(FinalMessage))
             M = int(line) ** Chave % modN;
             FinalMessage += chr(M);
         

@@ -24,4 +24,24 @@ No canal Fabrica de noobs no youtube eu assiti um video muito bom sobre criptogr
     BRASSE QUE SE VOCE PERDER A CHAVE PRIVADA NÃO TEM COMO RECUPERAR O ARQUIVO ORIGINAL
     voce ja possui as chaves publicas e privadas voce não precisa criar novamente as chaves</p>
 
+
+<h1>Performace</h1>
+<p>mensagens criptografadas com chaves muito grande pode levar dias para serem descriptofrafada.</p>
+<p>usando o chatgpt, ele me recomendou o seguinte para ter um codigo mais performatico e desriptografar de maneira mais rapida</p>
+<p>Existem algumas estratégias que você pode usar para aumentar a performance do seu algoritmo de descodificação RSA:
+
+    Otimização do código: Verifique se o seu código está sendo otimizado corretamente para aproveitar ao máximo a arquitetura da CPU. Além disso, verifique se você está usando as bibliotecas de criptografia mais recentes e otimizadas.
+
+    Uso de hardware dedicado: Se possível, considere a utilização de hardware dedicado, como uma placa de criptografia, para realizar operações criptográficas mais rapidamente.
+
+    Escolha de biblioteca: Algumas bibliotecas de criptografia são mais otimizadas que outras. Pesquise e teste as bibliotecas disponíveis para o seu sistema operacional e linguagem de programação para escolher a que oferece a melhor performance para as suas necessidades.
+
+    Paralelização: Se você estiver lidando com muitos dados para descodificar, considere a paralelização do seu algoritmo para aproveitar ao máximo as capacidades de múltiplos núcleos do seu hardware.
+
+    Algoritmo de geração de números primos: O tempo gasto na geração de chaves RSA depende fortemente do algoritmo de geração de números primos utilizado. Considere testar diferentes algoritmos de geração de números primos para encontrar o que oferece a melhor performance para as suas necessidades.
+</p>
+
+<p>tenho muito trabalho pela frente</p>
+
 <h1>e programa foi desenvolvido por um estudante da computação para fins didaticos. <strong>não</strong> o use para criptografar arquivos senssiveis, use-o por sua conta e risco</h1>
+
