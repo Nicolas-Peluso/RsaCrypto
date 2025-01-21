@@ -2,6 +2,7 @@ asc2Message = [];
 publicKey = [];
 privateKey = [];
 encripetedMessage = [];
+import ast;
 import os;
 
 def VerificaPrimo(p, q):
@@ -124,7 +125,6 @@ def criptografar(chaveE, chaveN, opt):
         text = File.read();
         EncriptaAsc2(text);
         File.close();
-    #else no lugar errado
     else:
         EncriptaAsc2(Menssagem);
     
@@ -140,7 +140,7 @@ def criptografar(chaveE, chaveN, opt):
             ArqFinal.write("\n");
         ArqFinal.close();
 
-    print("Tudo certo copie sua menssagem abaixo e lembresse de salvar sua chave privada rsa. (os numeros primos não podem ser usados na descriptografia)");
+    print("Tudo certo copie sua menssagem abaixo e lembresse de salvar suas chaves elas serão usadas na hora de voltar o texto orignal Voce nao tera acesso a essas chaves mais (os numeros primos não podem ser usados)");
     print(encripetedMessage);
    # else:
      
@@ -149,8 +149,11 @@ def descriptografar(Chave, modN, DescriOpt):
     FinalMessage = "";
 
     if(DescriOpt == 1):
+        final = str(input("cole aqui o texto critptografado com as []"));
+        asc2Message = ast.literal_eval(final);
+        print(asc2Message)
         for index in range(len(asc2Message)):
-            M = encripetedMessage[index] ** Chave % modN;
+            M = asc2Message[index] ** Chave % modN;
             FinalMessage += chr(M);
         print(FinalMessage)
     else:
